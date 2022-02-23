@@ -10,7 +10,7 @@ i{
 
 .bills{
    
-    margin: 8rem auto 0 auto;
+    margin: 5rem auto 0 auto;
     width: 60%;
     max-width: 1100px;
    
@@ -30,6 +30,12 @@ i{
     align-items: center;
 }
 
+.date{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
 
 .automatebtn{
     width:8rem;
@@ -41,8 +47,17 @@ i{
 }
 
 .automatebtn:hover{
-    background-color: lightgreen;
+    background-color: #D9D7F1;
     color:white;
     box-shadow: 0.25rem 0.1rem;
 }
 
+.automated
+{
+    background-color: lightgreen;
+}
+
+.automated:hover
+{
+    background-color: lightgreen;
+}

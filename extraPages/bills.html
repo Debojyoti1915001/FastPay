@@ -17,7 +17,7 @@
                     <i class="fa-solid fa-bolt fa-3x"></i>
                     <p >Electricity Bill</p>
                 </div>
-                <button class="automatebtn">Automate</button>
+                <button class="automatebtn" value="0" onChange="this.form.submit()">Automate</button>
             </div>
             <div class="bill">
                 <div class="info">
@@ -54,8 +54,17 @@
                 </div>
                 <button class="automatebtn">Automate</button>
             </div>
+            <div class="date">
+                <div>
+                    <label for="birthday" style="margin-right:0.5rem;">Select a Date</label>
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+                    <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+          
             
         </div>
-        <script src="" async defer></script>
+
+       <script src="bills.js"></script>
     </body>
 </html>
