@@ -51,7 +51,7 @@ router.post('bankdetails', async(req,res)=>{
             state
         }).save();
         if(!newBankdetails){
-            req.flash('error_msg','Issue cannot be created');
+            //req.flash('error_msg','  can not be created');
             return res.redirect('/');
         }
   
