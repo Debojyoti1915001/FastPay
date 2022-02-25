@@ -64,9 +64,13 @@ app.use((req, res, next) => {
 //Routes
 const indexRoutes = require('./routes/index')
 const userRoutes = require('./routes/user')
+const billRoutes = require("./routes/billsroute");
+const formRoutes = require("./routes/form");
 
 app.use('/',indexRoutes)
 app.use('/user',userRoutes)
+app.use('/user/form',formRoutes);
+app.use('/user/form/automate',billRoutes)
 
 //Start the server
 app.listen(PORT, () => {

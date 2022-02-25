@@ -1,0 +1,66 @@
+
+<%- include('partials/header.ejs') -%>
+<div class="bills">
+    <div class="bill">
+        <div class="info">
+            <i class="fa-solid fa-bolt fa-3x"></i>
+            <p >Electricity Bill</p>
+        </div>
+        <button class="automatebtn" value="0" onChange="this.form.submit()">Automate</button>
+    </div>
+    <div class="bill">
+        <div class="info">
+            <i class="fa-solid fa-gas-pump fa-3x"></i>
+            <p>Gas Bill</p>
+        </div>
+        <button class="automatebtn">Automate</button>
+    </div>
+    <div class="bill">
+        <div class="info">
+            <i class="fa-solid fa-droplet fa-3x"></i>
+            <p>Water Bill</p>
+        </div>
+        <button class="automatebtn">Automate</button>
+    </div>
+    <div class="bill">
+        <div class="info">
+            <i class="fa-solid fa-satellite-dish fa-3x"></i>
+            <p>DTH Reacharge</p>
+        </div>
+        <button class="automatebtn">Automate</button>
+    </div>
+    <div class="bill">
+        <div class="info">
+            <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
+            <p>Mobile Bill (Postpaid)</p>
+        </div>
+        <button class="automatebtn">Automate</button>
+    </div>
+    <div class="bill">
+        <div class="info">
+            <i class="fa fa-file-invoice-dollar fa-3x" aria-hidden="true"></i>
+            <p>Muncipal Taxes</p>
+        </div>
+        <button class="automatebtn">Automate</button>
+    </div>
+    <div class="bill">
+        <div class="info">
+            <i class="fa-solid fa-hand-holding-dollar fa-3x"></i>
+            <p>Loan</p>
+        </div>
+        <button class="automatebtn">Automate</button>
+    </div>
+    <div class="date">
+        <div>
+            <label for="birthday" style="margin-right:0.5rem;">Select a Date</label>
+            <input type="date" id="birthday" name="birthday">
+        </div>
+            <button type="button" class="btn btn-primary">Submit</button>
+    </div>
+  
+    
+</div>
+
+<script src="bills.js"></script>
+</body>
+</html>
