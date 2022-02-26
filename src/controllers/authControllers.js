@@ -205,7 +205,13 @@ module.exports.addBank_post = async(req,res)=>{
       res.send(req.user)
 };
 module.exports.addBank_get =async(req,res)=>{
-
+    // res.send(req.user)
     res.render('form');
 };
-
+module.exports.automateBills_get =async(req,res)=>{
+    res.render('bills')
+};
+module.exports.automateBills_post =async(req,res)=>{
+    
+    res.redirect('/user/automateBills')
+};
