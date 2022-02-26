@@ -15,13 +15,16 @@ const maxAge = 30 * 24 * 60 * 60
 
 // controller actions
 module.exports.signup_get = (req, res) => {
-    res.send('signup')
+    res.render('signup',{
+        type: 'signup'
+    })
 }
 
 module.exports.login_get = (req, res) => {
-    res.send('login')
+    res.render('signup',{
+        type: 'login'
+    })
 }
-
 module.exports.signup_post = async (req, res) => {
     const { name, email, password, confirmPwd } = req.body
     // console.log("in sign up route",req.body);
@@ -201,7 +204,7 @@ module.exports.addBank_post = async(req,res)=>{
       res.send(req.user)
 };
 module.exports.addBank_get =async(req,res)=>{
-    
+
     res.render('form');
 };
 
