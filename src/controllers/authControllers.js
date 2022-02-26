@@ -26,7 +26,7 @@ module.exports.login_get = (req, res) => {
     })
 }
 module.exports.signup_post = async (req, res) => {
-    const { name, email, password, confirmPwd } = req.body
+    const { name, email,adhaar, password, confirmPwd } = req.body
     // console.log("in sign up route",req.body);
     if (password != confirmPwd) {
         req.flash('error_msg', 'Passwords do not match. Try again')
@@ -44,7 +44,7 @@ module.exports.signup_post = async (req, res) => {
             return res.redirect('/')
         }
         // console.log("Short ID generated is: ", short_id)
-        const user = new User({ email, name, password})
+        const user = new User({ email, name, password,adhaar})
         let saveUser = await user.save()
         // console.log(saveUser);
         req.flash(
@@ -64,6 +64,7 @@ module.exports.signup_post = async (req, res) => {
             'error_msg',
             message
         )
+        console.log(req.body)
         res.status(400).redirect('/user/signup')
     }
 }

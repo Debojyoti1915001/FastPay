@@ -24,6 +24,10 @@ const userSchema = mongoose.Schema(
             type: Boolean,
             default:true,//to be changed to false after testing
         },
+        adhaar:{
+            type:String,
+            trim:true
+        },
         password: {
             type: String,
             trim: true,
