@@ -170,29 +170,30 @@ module.exports.logout_get = async (req, res) => {
     res.redirect('/')
 } 
 module.exports.addBank_post = async(req,res)=>{
-    const { name,accountNumber,mobileNumber,ifscCode,branch,city,state} = req.body;
-    try{
-      const newBankdetails = await new Bankdetails({
-          name,
-          accountNumber,
-          mobileNumber,
-          ifscCode,
-          branch,
-          city,
-          state
-      }).save();
-      if(!newBankdetails){
-          //req.flash('error_msg','  can not be created');
-          return res.redirect('/');
-      }
+    res.send(req.user)
+    // const { name,accountNumber,mobileNumber,ifscCode,branch,city,state} = req.body;
+    // try{
+    //   const newBankdetails = await new Bankdetails({
+    //       name,
+    //       accountNumber,
+    //       mobileNumber,
+    //       ifscCode,
+    //       branch,
+    //       city,
+    //       state
+    //   }).save();
+    //   if(!newBankdetails){
+    //       //req.flash('error_msg','  can not be created');
+    //       return res.redirect('/');
+    //   }
 
-      }
-      catch(err){
-          console.error(err);
-          return res.redirect('/');
-      }
-      console.log(req.body);
-      res.status(201).send('Bank details added successfully');
+    //   }
+    //   catch(err){
+    //       console.error(err);
+    //       return res.redirect('/');
+    //   }
+    //   console.log(req.body);
+    //   res.status(201).send('Bank details added successfully');
 };
 module.exports.addBank_get =async(req,res)=>{
   res.send(req.body);
