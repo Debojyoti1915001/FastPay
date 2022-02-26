@@ -33,6 +33,6 @@ const bankdetails = mongoose.Schema({
     }
 })
 
-const Contact = mongoose.model('Bankdetails', bankdetails)
+const bankdetails = mongoose.model('Bankdetails', bankdetails)
 
 module.exports = bankdetails
