@@ -42,7 +42,16 @@ const userSchema = mongoose.Schema(
             trim: true,
             validate: [utilities.phoneValidator, 'Phone number is invalid'],
         },
-        
+        bank: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Bankdetails',
+            },
+        ],
+        balance:{
+            type: Number,
+            default:10000,
+        },
         passwordResetToken: String,
         passwordResetExpires: Date,
     },

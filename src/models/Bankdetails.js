@@ -23,13 +23,11 @@ const bankdetails = mongoose.Schema({
     },
     city : {
         type: String,
-        trim : true,
-        uppercase: true
+        trim : true
     },
     state : {
         type : String,
-        trim : true,
-        uppercase: true
+        trim : true
     }
 })
 
