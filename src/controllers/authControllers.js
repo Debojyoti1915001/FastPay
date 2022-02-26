@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Bankdetails = require('../models/Bankdetails');
 const jwt = require('jsonwebtoken')
 const { signupMail } = require('../config/nodemailer')
 const path = require('path')
@@ -168,5 +169,32 @@ module.exports.logout_get = async (req, res) => {
     req.flash('success_msg', 'Successfully logged out')
     res.redirect('/')
 } 
+module.exports.addBank_post = async(req,res)=>{
+    const { name,accountNumber,mobileNumber,ifscCode,branch,city,state} = req.body;
+    try{
+      const newBankdetails = await new Bankdetails({
+          name,
+          accountNumber,
+          mobileNumber,
+          ifscCode,
+          branch,
+          city,
+          state
+      }).save();
+      if(!newBankdetails){
+          //req.flash('error_msg','  can not be created');
+          return res.redirect('/');
+      }
 
+      }
+      catch(err){
+          console.error(err);
+          return res.redirect('/');
+      }
+      console.log(req.body);
+      res.status(201).send('Bank details added successfully');
+};
+module.exports.addBank_get =async(req,res)=>{
+  res.send(req.body);
+};
 

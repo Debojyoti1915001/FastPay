@@ -10,7 +10,7 @@ router.post('/signup', authController.signup_post)
 router.get('/login', redirectIfLoggedIn, authController.login_get)
 router.post('/login', authController.login_post)
 router.get('/logout', requireAuth, authController.logout_get)
-
-
+router.get('/addBank', requireAuth, authController.addBank_get)
+router.post('/addBank', requireAuth, authController.addBank_post)
 
 module.exports = router
