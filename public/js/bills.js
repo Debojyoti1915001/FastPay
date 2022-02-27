@@ -18,3 +18,13 @@ for(let i=0;i<automateBtns.length;i++)
 
     });
 }
+
+var totalBill="";
+
+function addBill(k){
+    totalBill =totalBill + k;
+}
+
+function returnAutomatedItems(){
+    return totalBill;
+}

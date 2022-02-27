@@ -13,5 +13,5 @@ router.get('/logout', requireAuth, authController.logout_get)
 router.get('/addBank', requireAuth, authController.addBank_get)
 router.post('/addBank', requireAuth, authController.addBank_post)
 router.get('/automateBills', requireAuth, authController.automateBills_get)
-router.post('/automateBills', requireAuth, authController.automateBills_post)
+router.post('/automateBills/:auto', requireAuth, authController.automateBills_post)
 module.exports = router

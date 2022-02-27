@@ -212,6 +212,6 @@ module.exports.automateBills_get =async(req,res)=>{
     res.render('bills')
 };
 module.exports.automateBills_post =async(req,res)=>{
-    
-    res.redirect('/user/automateBills')
+    res.send(req.params)
+    //res.redirect('/user/automateBills')
 };

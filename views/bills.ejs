@@ -1,65 +1,63 @@
 
 <%- include('partials/header.ejs') -%>
-<div class="bills">
+<form class="bills" method="post" action=`/user/automateBills/${returnAutomatedItems()}`>
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-bolt fa-3x"></i>
             <p >Electricity Bill</p>
         </div>
-        <button class="automatebtn" value="0" onChange="this.form.submit()">Automate</button>
+        <button class="automatebtn" onclick="addBill(0)">Automate</button>
     </div>
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-gas-pump fa-3x"></i>
             <p>Gas Bill</p>
         </div>
-        <button class="automatebtn">Automate</button>
+        <button class="automatebtn" onclick="addBill(1)">Automate</button>
     </div>
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-droplet fa-3x"></i>
             <p>Water Bill</p>
         </div>
-        <button class="automatebtn">Automate</button>
+        <button class="automatebtn" onclick="addBill(2)">Automate</button>
     </div>
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-satellite-dish fa-3x"></i>
             <p>DTH Reacharge</p>
         </div>
-        <button class="automatebtn">Automate</button>
+        <button class="automatebtn" onclick="addBill(3)">Automate</button>
     </div>
     <div class="bill">
         <div class="info">
             <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
             <p>Mobile Bill (Postpaid)</p>
         </div>
-        <button class="automatebtn">Automate</button>
+        <button class="automatebtn" onclick="addBill(4)">Automate</button>
     </div>
     <div class="bill">
         <div class="info">
             <i class="fa fa-file-invoice-dollar fa-3x" aria-hidden="true"></i>
             <p>Muncipal Taxes</p>
         </div>
-        <button class="automatebtn">Automate</button>
+        <button class="automatebtn" onclick="addBill(5)">Automate</button>
     </div>
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-hand-holding-dollar fa-3x"></i>
             <p>Loan</p>
         </div>
-        <button class="automatebtn">Automate</button>
+        <button class="automatebtn" onclick="addBill(6)">Automate</button>
     </div>
     <div class="date">
         <div>
             <label for="birthday" style="margin-right:0.5rem;">Select a Date</label>
             <input type="date" id="birthday" name="birthday">
         </div>
-            <button type="button" class="btn btn-primary">Submit</button>
     </div>
-  
-    
-</div>
+    <button type="button" class="btn btn-primary" >Submit</button>
+</form>
 
 <script src="bills.js"></script>
 </body>
