@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Bills = require('../../public/js/bills')
 const Bankdetails = require('../models/Bankdetails');
 const jwt = require('jsonwebtoken')
 const { signupMail } = require('../config/nodemailer')
@@ -212,6 +213,6 @@ module.exports.automateBills_get =async(req,res)=>{
     res.render('bills')
 };
 module.exports.automateBills_post =async(req,res)=>{
-    res.send(req.params)
+    res.send(Bills)
     //res.redirect('/user/automateBills')
 };
