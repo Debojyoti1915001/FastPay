@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Contact = require('../models/Contact');
-const Bankdetails = require('../models/Bankdetails');
 const { contactMail } = require('../config/nodemailer');
 //Route for homepage
 router.get('/', (req, res) => {
@@ -38,33 +37,6 @@ router.post('/contact',async(req,res)=>{
     }
 })
 
-router.post('bankdetails', async(req,res)=>{
-      const { name,accountNumber,mobileNumber,ifscCode,branch,city,state} = req.body;
-      try{
-        const newBankdetails = await new Bankdetails({
-            name,
-            accountNumber,
-            mobileNumber,
-            ifscCode,
-            branch,
-            city,
-            state
-        }).save();
-        if(!newBankdetails){
-            //req.flash('error_msg','  can not be created');
-            return res.redirect('/');
-        }
-  
-        }
-        catch(err){
-            console.error(err);
-            return res.redirect('/');
-        }
-        console.log(req.body);
-        res.status(201).send('Bank details added successfully');
-});
-router.get('/bankdetails',(req,res)=>{
-    console.log(req.body);
-});
+
 
 module.exports = router

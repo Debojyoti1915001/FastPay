@@ -23,16 +23,14 @@ const bankdetails = mongoose.Schema({
     },
     city : {
         type: String,
-        trim : true,
-        uppercase: true
+        trim : true
     },
     state : {
         type : String,
-        trim : true,
-        uppercase: true
+        trim : true
     }
 })
 
-const Contact = mongoose.model('Bankdetails', bankdetails)
+const Bankdetails = mongoose.model('Bankdetails', bankdetails)
 
-module.exports = bankdetails
+module.exports = Bankdetails

@@ -1,0 +1,268 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Table Style</title>
+        <meta
+            name="viewport"
+            content="initial-scale=1.0; maximum-scale=1.0; width=device-width;"
+        />
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/automate.css">
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+
+    <body>
+        <div class="modal fade" id="basicModal0" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Set Interval</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/user/automateBills/0" method="POST">
+                    <% if( !arrayOfAutomatedBills.includes(0)){%>
+                    <div class="modal-body" >
+                    <label for="quantity">Interval</label>
+                    <input type="number" id="quantity" style="background-color: rgb(161, 161, 161); color: aliceblue; "name="quantity" min="30" max="60"> 
+                </div>
+                <% } %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% if( !arrayOfAutomatedBills.includes(0) ){%>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <%}else{ %>
+                    <button type="submit" class="btn btn-primary">You sure?</button>
+                <%}%>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="basicModal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Set Interval</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/user/automateBills/1" method="POST">
+                    <% if( !arrayOfAutomatedBills.includes(1)){%>
+                    <div class="modal-body" >
+                    <label for="quantity">Interval</label>
+                    <input type="number" id="quantity" style="background-color: rgb(161, 161, 161); color: aliceblue; "name="quantity" min="30" max="60"> 
+                </div>
+                <% } %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% if( !arrayOfAutomatedBills.includes(1) ){%>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <%}else{ %>
+                    <button type="submit" class="btn btn-primary">You sure?</button>
+                <%}%>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="basicModal2" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Set Interval</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/user/automateBills/2" method="POST">
+                    <% if( !arrayOfAutomatedBills.includes(2)){%>
+                    <div class="modal-body" >
+                    <label for="quantity">Interval</label>
+                    <input type="number" id="quantity" style="background-color: rgb(161, 161, 161); color: aliceblue; "name="quantity" min="30" max="60"> 
+                </div>
+                <% } %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% if( !arrayOfAutomatedBills.includes(2) ){%>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <%}else{ %>
+                    <button type="submit" class="btn btn-primary">You sure?</button>
+                <%}%>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="basicModal3" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Set Interval</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/user/automateBills/3" method="POST">
+                    <% if( !arrayOfAutomatedBills.includes(3)){%>
+                    <div class="modal-body" >
+                    <label for="quantity">Interval</label>
+                    <input type="number" id="quantity" style="background-color: rgb(161, 161, 161); color: aliceblue; "name="quantity" min="30" max="60"> 
+                </div>
+                <% } %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% if( !arrayOfAutomatedBills.includes(3) ){%>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <%}else{ %>
+                    <button type="submit" class="btn btn-primary">You sure?</button>
+                <%}%>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="basicModal4" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Set Interval</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/user/automateBills/4" method="POST">
+                    <% if( !arrayOfAutomatedBills.includes(4)){%>
+                    <div class="modal-body" >
+                    <label for="quantity">Interval</label>
+                    <input type="number" id="quantity" style="background-color: rgb(161, 161, 161); color: aliceblue; "name="quantity" min="30" max="60"> 
+                </div>
+                <% } %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% if( !arrayOfAutomatedBills.includes(4) ){%>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <%}else{ %>
+                    <button type="submit" class="btn btn-primary">You sure?</button>
+                <%}%>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="basicModal5" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Set Interval</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/user/automateBills/5" method="POST">
+                    <% if( !arrayOfAutomatedBills.includes(5)){%>
+                    <div class="modal-body" >
+                    <label for="quantity">Interval</label>
+                    <input type="number" id="quantity" style="background-color: rgb(161, 161, 161); color: aliceblue; "name="quantity" min="30" max="60"> 
+                </div>
+                <% } %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <% if( !arrayOfAutomatedBills.includes(5) ){%>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                  <%}else{ %>
+                    <button type="submit" class="btn btn-primary">You sure?</button>
+                <%}%>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        <div class="table-title" >
+            <h3>Automate Bills Here!s</h3>
+        </div>
+        <table class="table-fill">
+            <thead>
+                <tr>
+                    <th class="text-left">Biller</th>
+                    <th class="text-center">Amount</th>
+                    <th class="text-right">Automate</th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left">Electricity Bill</td>
+                    <td class="text-center">$ <%=arrayOfBills[0]%></td>
+                    <% if(!arrayOfAutomatedBills.includes(0)){%>
+                    <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal0">
+                        Automate</a></td>
+                    <%}else{%>
+                        <td class="text-right href="#" class="btn btn-lg btn-failure" data-toggle="modal" data-target="#basicModal0">
+                            Stop Automate</a></td>
+                    <%}%>
+
+                </tr>
+                <tr>
+                    <td class="text-left">Gas Bill</td>
+                    <td class="text-center">$ <%=arrayOfBills[1]%></td>
+                    <% if(!arrayOfAutomatedBills.includes(1)){%>
+                        <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal1">
+                            Automate</a></td>
+                        <%}else{%>
+                            <td class="text-right href="#" class="btn btn-lg btn-failure" data-toggle="modal" data-target="#basicModal1">
+                                Stop Automate</a></td>
+                        <%}%>
+                </tr>
+                <tr>
+                    <td class="text-left">DTH Bill</td>
+                    <td class="text-center">$<%= arrayOfBills[2]%></td>
+                    <% if(!arrayOfAutomatedBills.includes(2)){%>
+                        <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal2">
+                            Automate</a></td>
+                        <%}else{%>
+                            <td class="text-right href="#" class="btn btn-lg btn-failure" data-toggle="modal" data-target="#basicModal2">
+                                Stop Automate</a></td>
+                        <%}%>
+                </tr>
+                <tr>
+                    <td class="text-left">Water Bill</td>
+                    <td class="text-center">$ <%=arrayOfBills[3]%></td>
+                    <% if(!arrayOfAutomatedBills.includes(3)){%>
+                        <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal3">
+                            Automate</a></td>
+                        <%}else{%>
+                            <td class="text-right href="#" class="btn btn-lg btn-failure" data-toggle="modal" data-target="#basicModal3">
+                                Stop Automate</a></td>
+                        <%}%>
+                </tr>
+                <tr>
+                    <td class="text-left">Mobile Bill</td>
+                    <td class="text-center">$ <%=arrayOfBills[4]%></td>
+                    <% if(!arrayOfAutomatedBills.includes(4)){%>
+                        <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal4">
+                            Automate</a></td>
+                        <%}else{%>
+                            <td class="text-right href="#" class="btn btn-lg btn-failure" data-toggle="modal" data-target="#basicModal4">
+                                Stop Automate</a></td>
+                        <%}%>
+                </tr>
+                <tr>
+                    <td class="text-left">Municipal Taxes</td>
+                    <td class="text-center">$<%= arrayOfBills[5]%></td>
+                    <% if(!arrayOfAutomatedBills.includes(5)){%>
+                        <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal5">
+                            Automate</a></td>
+                        <%}else{%>
+                            <td class="text-right href="#" class="btn btn-lg btn-failure" data-toggle="modal" data-target="#basicModal5">
+                                Stop Automate</a></td>
+                        <%}%>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    <script src="/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</html>

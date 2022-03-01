@@ -1,0 +1,44 @@
+
+<%- include("partials/header.ejs") -%>
+
+<div class="container" style="min-height: 100vh; display:flex; align-items:center; justify-content:center;">
+    <form class="row g-3" action="/user/addBank" method="POST">
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Bank Name</label>
+          <input type="text" class="form-control" id="inputEmail4" name="name">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Account No.</label>
+          <input type="text" class="form-control" id="inputPassword4" name="accountNumber">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Registered Mobile Number</label>
+          <input type="text" class="form-control" id="inputPassword4"name="mobileNumber">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">IFSC Code</label>
+          <input type="text" class="form-control" id="inputPassword4"name="ifscCode">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Branch</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="State Bank of India"name="branch">
+        </div>
+        
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" class="form-control" id="inputCity"name="city">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" class="form-control" id="inputCity"name="state">
+        </div>
+  
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Add this bank</button>
+        </div>
+      </form>
+
+    </div>
+</body>
+</html>

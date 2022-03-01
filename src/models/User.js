@@ -24,6 +24,10 @@ const userSchema = mongoose.Schema(
             type: Boolean,
             default:true,//to be changed to false after testing
         },
+        adhaar:{
+            type:String,
+            trim:true
+        },
         password: {
             type: String,
             trim: true,
@@ -42,7 +46,25 @@ const userSchema = mongoose.Schema(
             trim: true,
             validate: [utilities.phoneValidator, 'Phone number is invalid'],
         },
-        
+        bank: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Bankdetails',
+            },
+        ],
+        automated:[{
+            type: Number,
+        }],
+        bills:[{
+            type: Number,
+        }],
+        time:[{
+            type: String,
+        }],
+        balance:{
+            type: Number,
+            default:10000,
+        },
         passwordResetToken: String,
         passwordResetExpires: Date,
     },

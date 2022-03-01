@@ -1,28 +1,31 @@
 const User = require('../models/User')
+const Bills = require('../../public/js/bills')
+const Bankdetails = require('../models/Bankdetails')
 const jwt = require('jsonwebtoken')
 const { signupMail } = require('../config/nodemailer')
 const path = require('path')
-const { handleErrors,generateShortId } = require('../utilities/Utilities'); 
+const { handleErrors, generateShortId } = require('../utilities/Utilities')
 const crypto = require('crypto')
 require('dotenv').config()
-const { nanoId } = require("nanoid")
-const mongoose=require('mongoose')
+const { nanoId, random } = require('nanoid')
+const mongoose = require('mongoose')
 
 const maxAge = 30 * 24 * 60 * 60
 
-
-
 // controller actions
 module.exports.signup_get = (req, res) => {
-    res.send('signup')
+    res.render('signup', {
+        type: 'signup',
+    })
 }
 
 module.exports.login_get = (req, res) => {
-    res.send('login')
+    res.render('signup', {
+        type: 'login',
+    })
 }
-
 module.exports.signup_post = async (req, res) => {
-    const { name, email, password, confirmPwd } = req.body
+    const { name, email, adhaar, password, confirmPwd } = req.body
     // console.log("in sign up route",req.body);
     if (password != confirmPwd) {
         req.flash('error_msg', 'Passwords do not match. Try again')
@@ -40,7 +43,7 @@ module.exports.signup_post = async (req, res) => {
             return res.redirect('/')
         }
         // console.log("Short ID generated is: ", short_id)
-        const user = new User({ email, name, password})
+        const user = new User({ email, name, password, adhaar })
         let saveUser = await user.save()
         // console.log(saveUser);
         req.flash(
@@ -54,12 +57,14 @@ module.exports.signup_post = async (req, res) => {
         const errors = handleErrors(err)
         // console.log(errors)
 
-        var message = 'Could not signup. '.concat((errors['email'] || ""), (errors['password'] || ""),(errors['name'] || "")  )
-        //res.json(errors);
-        req.flash(
-            'error_msg',
-            message
+        var message = 'Could not signup. '.concat(
+            errors['email'] || '',
+            errors['password'] || '',
+            errors['name'] || ''
         )
+        //res.json(errors);
+        req.flash('error_msg', message)
+        console.log(req.body)
         res.status(400).redirect('/user/signup')
     }
 }
@@ -113,24 +118,24 @@ module.exports.login_post = async (req, res) => {
     // console.log('in Login route')
     //  console.log('req.body',req.body)
     try {
-
         const user = await User.login(email, password)
         // console.log("user",user)
 
-        const userExists = await User.findOne({ email })  
-    //    console.log("userexsits",userExists)
-       
+        const userExists = await User.findOne({ email })
+        //    console.log("userexsits",userExists)
 
         if (!userExists.active) {
-            const currDate = new Date();
-            const initialUpdatedAt = userExists.updatedAt;
-            const timeDiff = Math.abs(currDate.getTime() - initialUpdatedAt.getTime());
-            if(timeDiff<=10800000)
-            {
+            const currDate = new Date()
+            const initialUpdatedAt = userExists.updatedAt
+            const timeDiff = Math.abs(
+                currDate.getTime() - initialUpdatedAt.getTime()
+            )
+            if (timeDiff <= 10800000) {
                 // console.log("Email already sent check it")
                 req.flash(
                     'error_msg',
-                    `${userExists.name}, we have already sent you a verify link please check your email`)
+                    `${userExists.name}, we have already sent you a verify link please check your email`
+                )
                 res.redirect('/')
                 return
             }
@@ -139,18 +144,20 @@ module.exports.login_post = async (req, res) => {
                 `${userExists.name}, your verify link has expired we have sent you another email please check you mailbox`
             )
             signupMail(userExists, req.hostname, req.protocol)
-            await User.findByIdAndUpdate(userExists._id, { updatedAt: new Date() });
+            await User.findByIdAndUpdate(userExists._id, {
+                updatedAt: new Date(),
+            })
             // console.log('userExists',userExists)
             res.redirect('/')
             return
         }
-       
+
         const token = user.generateAuthToken(maxAge)
 
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
         // console.log(user);
         //signupMail(saveUser)
-    //    console.log("logged in")
+        //    console.log("logged in")
         req.flash('success_msg', 'Successfully logged in')
         res.status(200).redirect('/')
     } catch (err) {
@@ -160,13 +167,118 @@ module.exports.login_post = async (req, res) => {
     }
 }
 
-
 module.exports.logout_get = async (req, res) => {
     // res.cookie('jwt', '', { maxAge: 1 });
     // const cookie = req.cookies.jwt
     res.clearCookie('jwt')
     req.flash('success_msg', 'Successfully logged out')
     res.redirect('/')
-} 
+}
+module.exports.addBank_post = async (req, res) => {
+    // res.send(req.user)
+    const { name, accountNumber, mobileNumber, ifscCode, branch, city, state } =
+        req.body
+    try {
+        const newBankdetails = await new Bankdetails({
+            name,
+            accountNumber,
+            mobileNumber,
+            ifscCode,
+            branch,
+            city,
+            state,
+        }).save()
 
-
+        if (!newBankdetails) {
+            //req.flash('error_msg','  can not be created');
+            return res.send('Failed')
+        }
+        const userBanks = req.user.bank
+        console.log(userBanks)
+        userBanks.push(newBankdetails._id)
+        await User.findOneAndUpdate({ _id: req.user._id }, { bank: userBanks })
+    } catch (err) {
+        console.error(err)
+        return res.redirect('/')
+    }
+    console.log(req.body)
+    //   res.status(201).send('Bank details added successfully');
+    res.send(req.user)
+}
+module.exports.addBank_get = async (req, res) => {
+    // res.send(req.user)
+    res.render('form')
+}
+module.exports.automateBills_get = async (req, res) => {
+    var arrayOfAutomatedBills = req.user.automated
+    var arrayOfBills = req.user.bills
+    var date = new Date()
+    date = date.toISOString().substring(0, 10)
+    var time = req.user.time
+    if (arrayOfBills.length == 0) {
+        // arrayOfBills=[]
+        for (var i = 0; i < 6; i++) {
+            console.log()
+            var v = (Math.random() * 1000).toFixed(2)
+            var val = ((v + 3000) % 4000) + 1000
+            arrayOfBills.push(val)
+        }
+        // to be fetched from govt api
+        await User.findOneAndUpdate(
+            { _id: req.user._id },
+            { bills: arrayOfBills }
+        )
+    }
+    if (time.length === 0) time = new Array(6).fill('0')
+    for (var i = 0; i < 6; i++) {
+        console.log(date, ' ', time[i])
+        if (time[i] !== '0' && date >= time[i]) {
+            console.log('yes')
+            var v = (Math.random() * 1000).toFixed(2)
+            var val = ((v + 3000) % 4000) + 1000
+            arrayOfBills[i] = val
+            time[i] = '0'
+            if (arrayOfAutomatedBills.includes(i)) {
+                arrayOfAutomatedBills.splice(
+                    arrayOfAutomatedBills.indexOf(i),
+                    1
+                )
+            }
+            await User.findOneAndUpdate(
+                { _id: req.user._id },
+                { automated: arrayOfAutomatedBills }
+            )
+        }
+    }
+    await User.findOneAndUpdate({ _id: req.user._id }, { bills: arrayOfBills })
+    await User.findOneAndUpdate({ _id: req.user._id }, { time: time })
+    res.render('billsautomate', { arrayOfAutomatedBills, arrayOfBills })
+}
+module.exports.automateBills_post = async (req, res) => {
+    var id = req.params.id
+    var addDays = req.body.quantity
+    var time = req.user.time
+    var date = new Date()
+    console.log(time)
+    if (time.length === 0) time = new Array(6).fill('0')
+    if (addDays !== null) {
+        date.setDate(date.getDate() + addDays - 9)
+        console.log(date)
+        if (time[id] === '0') time[id] = date.toISOString().substring(0, 10)
+        else time[id] = '0'
+        console.log(time)
+        await User.findOneAndUpdate({ _id: req.user._id }, { time })
+    } else time[id] = '0'
+    var arrayOfAutomatedBills = req.user.automated
+    if (!arrayOfAutomatedBills.includes(id)) {
+        arrayOfAutomatedBills.push(id)
+    } else {
+        arrayOfAutomatedBills.splice(arrayOfAutomatedBills.indexOf(id), 1)
+    }
+    await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { automated: arrayOfAutomatedBills }
+    )
+    // console.log(arrayOfAutomatedBills)
+    res.redirect('/user/automateBills')
+}
