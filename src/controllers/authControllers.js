@@ -231,15 +231,18 @@ module.exports.automateBills_get = async (req, res) => {
     }
     if (time.length === 0) time = new Array(6).fill('0')
     for (var i = 0; i < 6; i++) {
-        console.log(date," ",time[i])
-        if (time[i] !== '0'&&date>=time[i]) {
-            console.log("yes")
+        console.log(date, ' ', time[i])
+        if (time[i] !== '0' && date >= time[i]) {
+            console.log('yes')
             var v = (Math.random() * 1000).toFixed(2)
             var val = ((v + 3000) % 4000) + 1000
-            arrayOfBills[i]=val;
-            time[i]="0"
+            arrayOfBills[i] = val
+            time[i] = '0'
             if (arrayOfAutomatedBills.includes(i)) {
-                arrayOfAutomatedBills.splice(arrayOfAutomatedBills.indexOf(i), 1)
+                arrayOfAutomatedBills.splice(
+                    arrayOfAutomatedBills.indexOf(i),
+                    1
+                )
             }
             await User.findOneAndUpdate(
                 { _id: req.user._id },
@@ -247,14 +250,8 @@ module.exports.automateBills_get = async (req, res) => {
             )
         }
     }
-    await User.findOneAndUpdate(
-        { _id: req.user._id },
-        { bills: arrayOfBills }
-    )
-    await User.findOneAndUpdate(
-        { _id: req.user._id },
-        { time: time }
-    )
+    await User.findOneAndUpdate({ _id: req.user._id }, { bills: arrayOfBills })
+    await User.findOneAndUpdate({ _id: req.user._id }, { time: time })
     res.render('billsautomate', { arrayOfAutomatedBills, arrayOfBills })
 }
 module.exports.automateBills_post = async (req, res) => {
@@ -265,13 +262,13 @@ module.exports.automateBills_post = async (req, res) => {
     console.log(time)
     if (time.length === 0) time = new Array(6).fill('0')
     if (addDays !== null) {
-        date.setDate(date.getDate() + addDays-9)
+        date.setDate(date.getDate() + addDays - 9)
         console.log(date)
         if (time[id] === '0') time[id] = date.toISOString().substring(0, 10)
         else time[id] = '0'
         console.log(time)
         await User.findOneAndUpdate({ _id: req.user._id }, { time })
-    }else time[id] = '0'
+    } else time[id] = '0'
     var arrayOfAutomatedBills = req.user.automated
     if (!arrayOfAutomatedBills.includes(id)) {
         arrayOfAutomatedBills.push(id)
