@@ -4,11 +4,11 @@ const Bankdetails = require('../models/Bankdetails');
 const jwt = require('jsonwebtoken')
 const { signupMail } = require('../config/nodemailer')
 const path = require('path')
-const { handleErrors,generateShortId } = require('../utilities/Utilities'); 
+const { handleErrors, generateShortId } = require('../utilities/Utilities');
 const crypto = require('crypto')
 require('dotenv').config()
 const { nanoId } = require("nanoid")
-const mongoose=require('mongoose')
+const mongoose = require('mongoose')
 
 const maxAge = 30 * 24 * 60 * 60
 
@@ -16,18 +16,18 @@ const maxAge = 30 * 24 * 60 * 60
 
 // controller actions
 module.exports.signup_get = (req, res) => {
-    res.render('signup',{
+    res.render('signup', {
         type: 'signup'
     })
 }
 
 module.exports.login_get = (req, res) => {
-    res.render('signup',{
+    res.render('signup', {
         type: 'login'
     })
 }
 module.exports.signup_post = async (req, res) => {
-    const { name, email,adhaar, password, confirmPwd } = req.body
+    const { name, email, adhaar, password, confirmPwd } = req.body
     // console.log("in sign up route",req.body);
     if (password != confirmPwd) {
         req.flash('error_msg', 'Passwords do not match. Try again')
@@ -45,7 +45,7 @@ module.exports.signup_post = async (req, res) => {
             return res.redirect('/')
         }
         // console.log("Short ID generated is: ", short_id)
-        const user = new User({ email, name, password,adhaar})
+        const user = new User({ email, name, password, adhaar })
         let saveUser = await user.save()
         // console.log(saveUser);
         req.flash(
@@ -59,7 +59,7 @@ module.exports.signup_post = async (req, res) => {
         const errors = handleErrors(err)
         // console.log(errors)
 
-        var message = 'Could not signup. '.concat((errors['email'] || ""), (errors['password'] || ""),(errors['name'] || "")  )
+        var message = 'Could not signup. '.concat((errors['email'] || ""), (errors['password'] || ""), (errors['name'] || ""))
         //res.json(errors);
         req.flash(
             'error_msg',
@@ -123,16 +123,15 @@ module.exports.login_post = async (req, res) => {
         const user = await User.login(email, password)
         // console.log("user",user)
 
-        const userExists = await User.findOne({ email })  
-    //    console.log("userexsits",userExists)
-       
+        const userExists = await User.findOne({ email })
+        //    console.log("userexsits",userExists)
+
 
         if (!userExists.active) {
             const currDate = new Date();
             const initialUpdatedAt = userExists.updatedAt;
             const timeDiff = Math.abs(currDate.getTime() - initialUpdatedAt.getTime());
-            if(timeDiff<=10800000)
-            {
+            if (timeDiff <= 10800000) {
                 // console.log("Email already sent check it")
                 req.flash(
                     'error_msg',
@@ -150,13 +149,13 @@ module.exports.login_post = async (req, res) => {
             res.redirect('/')
             return
         }
-       
+
         const token = user.generateAuthToken(maxAge)
 
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 })
         // console.log(user);
         //signupMail(saveUser)
-    //    console.log("logged in")
+        //    console.log("logged in")
         req.flash('success_msg', 'Successfully logged in')
         res.status(200).redirect('/')
     } catch (err) {
@@ -173,46 +172,54 @@ module.exports.logout_get = async (req, res) => {
     res.clearCookie('jwt')
     req.flash('success_msg', 'Successfully logged out')
     res.redirect('/')
-} 
-module.exports.addBank_post = async(req,res)=>{
+}
+module.exports.addBank_post = async (req, res) => {
     // res.send(req.user)
-    const { name,accountNumber,mobileNumber,ifscCode,branch,city,state} = req.body;
-    try{
-      const newBankdetails = await new Bankdetails({
-          name,
-          accountNumber,
-          mobileNumber,
-          ifscCode,
-          branch,
-          city,
-          state
-      }).save();
+    const { name, accountNumber, mobileNumber, ifscCode, branch, city, state } = req.body;
+    try {
+        const newBankdetails = await new Bankdetails({
+            name,
+            accountNumber,
+            mobileNumber,
+            ifscCode,
+            branch,
+            city,
+            state
+        }).save();
 
-      if(!newBankdetails){
-          //req.flash('error_msg','  can not be created');
-          return res.send('Failed');
-      }
-      const userBanks=req.user.bank
-      console.log(userBanks)
-      userBanks.push(newBankdetails._id)
-      await User.findOneAndUpdate({_id:req.user._id}, {bank:userBanks});
-      }
-      catch(err){
-          console.error(err);
-          return res.redirect('/');
-      }
-      console.log(req.body);
+        if (!newBankdetails) {
+            //req.flash('error_msg','  can not be created');
+            return res.send('Failed');
+        }
+        const userBanks = req.user.bank
+        console.log(userBanks)
+        userBanks.push(newBankdetails._id)
+        await User.findOneAndUpdate({ _id: req.user._id }, { bank: userBanks });
+    }
+    catch (err) {
+        console.error(err);
+        return res.redirect('/');
+    }
+    console.log(req.body);
     //   res.status(201).send('Bank details added successfully');
-      res.send(req.user)
+    res.send(req.user)
 };
-module.exports.addBank_get =async(req,res)=>{
+module.exports.addBank_get = async (req, res) => {
     // res.send(req.user)
     res.render('form');
 };
-module.exports.automateBills_get =async(req,res)=>{
+module.exports.automateBills_get = async (req, res) => {
     res.render('bills')
 };
-module.exports.automateBills_post =async(req,res)=>{
-    
-    //res.redirect('/user/automateBills')
+module.exports.automateBills_post = async (req, res) => {
+    var id = req.params.id
+    var arrayOfAutomatedBills=req.user.automated
+    if(!arrayOfAutomatedBills.includes(id)){
+        arrayOfAutomatedBills.push(id);
+    }else{
+        arrayOfAutomatedBills.splice(arrayOfAutomatedBills.indexOf(id), 1);
+    }
+    await User.findOneAndUpdate({ _id: req.user._id }, { automated: arrayOfAutomatedBills });
+
+    res.redirect('/user/automateBills')
 };

@@ -6,38 +6,33 @@
             name="viewport"
             content="initial-scale=1.0; maximum-scale=1.0; width=device-width;"
         />
-        <link rel="stylesheet" href="/public/css/automate.css">
+        <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../public/css/automate.css">
+        <link rel="stylesheet" href="../public/css/style.css">
     </head>
 
     <body>
-        <div id="myModalLogin" class="modal fade">
-            <div class="modal-dialog modal-login">
-                <div class="modal-content">
-                    <div class="modal-header">				
-                        <h4 class="modal-title">Member Login</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/user/login" method="POST">
-                            <div class="form-group">
-                                <i class="fa fa-user"></i>
-                                <input type="email" name="email"class="form-control" placeholder="Email" required="required">
-                            </div>
-                            <div class="form-group">
-                                <i class="fa fa-lock"></i>
-                                <input type="password"name="password" class="form-control" placeholder="Password" required="required">					
-                            </div>
-                            <div class="form-group">
-                                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
-                            </div>
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#">Forgot Password?</a>
-                    </div>
+        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Set Interval</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
+                <div class="modal-body">
+                    <label for="quantity">Interval</label>
+                    <input type="number" id="quantity" style="background-color: rgb(161, 161, 161); color: aliceblue; "name="quantity" min="30" max="60"> 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
             </div>
-        </div>   
+          </div>
+          
         <div class="table-title">
             <h3>Data Table</h3>
         </div>
@@ -53,39 +48,44 @@
                 <tr>
                     <td class="text-left">Electricity Bill</td>
                     <td class="text-center">$ 50,000.00</td>
-                    <td class="text-left"><button class=" btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase trigger-btn"
-                        href="#myModalLogin" data-toggle="modal">Automate</button></td>
+                    <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">
+                        Automate</a></td>
 
                 </tr>
                 <tr>
                     <td class="text-left">Gas Bill</td>
                     <td class="text-left">$ 10,000.00</td>
-                    <td class="text-left">Automate</td>
+                    <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">
+                        Automate</a></td>
                 </tr>
                 <tr>
                     <td class="text-left">DTH Bill</td>
                     <td class="text-left">$ 85,000.00</td>
-                    <td class="text-left">Automate</td>
+                    <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">
+                        Automate</a></td>
                 </tr>
                 <tr>
                     <td class="text-left">Water Bill</td>
                     <td class="text-left">$ 56,000.00</td>
-                    <td class="text-left">Automate</td>
+                    <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">
+                        Automate</a></td>
                 </tr>
                 <tr>
                     <td class="text-left">Mobile Bill</td>
                     <td class="text-left">$ 98,000.00</td>
-                    <td class="text-left">Automate</td>
+                    <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">
+                        Automate</a></td>
                 </tr>
                 <tr>
                     <td class="text-left">Municipal Taxes</td>
                     <td class="text-left">$ 98,000.00</td>
-                    <td class="text-left">Automate</td>
+                    <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">
+                        Automate</a></td>
                 </tr>
             </tbody>
         </table>
     </body>
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../public/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../public/js/popper.min.js"></script>
+    <script src="../public/js/bootstrap.min.js"></script>
 </html>

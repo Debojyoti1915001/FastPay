@@ -52,6 +52,9 @@ const userSchema = mongoose.Schema(
                 ref: 'Bankdetails',
             },
         ],
+        automated:[{
+            type: Number,
+        }],
         balance:{
             type: Number,
             default:10000,

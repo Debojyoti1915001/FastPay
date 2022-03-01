@@ -19,10 +19,3 @@
 //     });
 // }
 
-var totalBill="";
-
-function addBill(k){
-    totalBill =totalBill + k;
-}
-
-module.exports=totalBill;
