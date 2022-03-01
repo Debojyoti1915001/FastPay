@@ -209,7 +209,7 @@ module.exports.addBank_get = async (req, res) => {
     res.render('form');
 };
 module.exports.automateBills_get = async (req, res) => {
-    res.render('bills')
+    res.render('billsautomate')
 };
 module.exports.automateBills_post = async (req, res) => {
     var id = req.params.id
@@ -221,5 +221,5 @@ module.exports.automateBills_post = async (req, res) => {
     }
     await User.findOneAndUpdate({ _id: req.user._id }, { automated: arrayOfAutomatedBills });
 
-    res.redirect('/user/automateBills')
+    res.redirect('/user/billsautomate')
 };
