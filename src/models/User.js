@@ -55,6 +55,12 @@ const userSchema = mongoose.Schema(
         automated:[{
             type: Number,
         }],
+        bills:[{
+            type: Number,
+        }],
+        time:[{
+            type: String,
+        }],
         balance:{
             type: Number,
             default:10000,
