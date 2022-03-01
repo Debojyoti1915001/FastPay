@@ -213,6 +213,6 @@ module.exports.automateBills_get =async(req,res)=>{
     res.render('bills')
 };
 module.exports.automateBills_post =async(req,res)=>{
-    res.send(Bills)
+    
     //res.redirect('/user/automateBills')
 };

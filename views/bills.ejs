@@ -1,64 +1,100 @@
 
 <%- include('partials/header.ejs') -%>
-<form class="bills" method="POST" action="/user/automateBills">
+<div id="myModalLogin" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">				
+                <h4 class="modal-title">Member Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="/user/login" method="POST">
+                    <div class="form-group">
+                        <i class="fa fa-user"></i>
+                        <input type="email" name="email"class="form-control" placeholder="Email" required="required">
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock"></i>
+                        <input type="password"name="password" class="form-control" placeholder="Password" required="required">					
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
+                    </div>
+                
+            </div>
+            <div class="modal-footer">
+                <a href="#">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</div>     
+    <!-- <label for="quantity">Interval</label>
+    <input type="number" id="quantity" name="quantity" min="30" max="60">  -->
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-bolt fa-3x"></i>
             <p >Electricity Bill</p>
         </div>
-        <button class="automatebtn" onclick="addBill(0)">Automate</button>
+        <button class=" btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase trigger-btn"
+        href="#myModalLogin" data-toggle="modal">Automate</button>
     </div>
+
+
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-gas-pump fa-3x"></i>
             <p>Gas Bill</p>
         </div>
-        <button class="automatebtn" onclick="addBill(1)">Automate</button>
+        <button class="automatebtn"
+        class=" btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase trigger-btn"
+        href="#myModalLogin" data-toggle="modal">Automate</button>
     </div>
+
+    <label for="quantity">Interval</label>
+    <input type="number" id="quantity" name="quantity" min="30" max="60"> 
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-droplet fa-3x"></i>
             <p>Water Bill</p>
         </div>
-        <button class="automatebtn" onclick="addBill(2)">Automate</button>
+        <button class="automatebtn">Automate</button>
     </div>
+
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-satellite-dish fa-3x"></i>
             <p>DTH Reacharge</p>
         </div>
-        <button class="automatebtn" onclick="addBill(3)">Automate</button>
+        <button class="automatebtn">Automate</button>
     </div>
+
     <div class="bill">
         <div class="info">
             <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
             <p>Mobile Bill (Postpaid)</p>
         </div>
-        <button class="automatebtn" onclick="addBill(4)">Automate</button>
+        <button class="automatebtn">Automate</button>
     </div>
+
     <div class="bill">
         <div class="info">
             <i class="fa fa-file-invoice-dollar fa-3x" aria-hidden="true"></i>
             <p>Muncipal Taxes</p>
         </div>
-        <button class="automatebtn" onclick="addBill(5)">Automate</button>
+        <button class="automatebtn">Automate</button>
     </div>
+
     <div class="bill">
         <div class="info">
             <i class="fa-solid fa-hand-holding-dollar fa-3x"></i>
             <p>Loan</p>
         </div>
-        <button class="automatebtn" onclick="addBill(6)">Automate</button>
+        <button class="automatebtn">Automate</button>
     </div>
-    <div class="date">
-        <div>
-            <label for="birthday" style="margin-right:0.5rem;">Select a Date</label>
-            <input type="date" id="birthday" name="birthday">
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary" >Submit</button>
-</form>
 
+
+<button class=" btn btn-outline-dark my-2 my-sm-0 mr-3 text-uppercase trigger-btn"
+href="#myModalLogin" data-toggle="modal">open</button>
 <script src="bills.js"></script>
 </body>
 </html>
