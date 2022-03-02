@@ -212,8 +212,8 @@ module.exports.addBank_get = async (req, res) => {
 module.exports.automateBills_get = async (req, res) => {
     var arrayOfAutomatedBills = req.user.automated
     var arrayOfBills = req.user.bills
-    var date = new Date()
-    date = date.toISOString().substring(0, 10)
+    var date = new Date().toISOString()
+    // date = date.toISOString().substring(0, 10)
     var time = req.user.time
     if (arrayOfBills.length == 0) {
         // arrayOfBills=[]
@@ -262,9 +262,10 @@ module.exports.automateBills_post = async (req, res) => {
     console.log(time)
     if (time.length === 0) time = new Array(6).fill('0')
     if (addDays !== null) {
-        date.setDate(date.getDate() + addDays - 9)
+        date.setDate(date.getDate() + parseInt(addDays) )
         console.log(date)
-        if (time[id] === '0') time[id] = date.toISOString().substring(0, 10)
+        if (time[id] === '0') {time[id] = date.toISOString()
+        }
         else time[id] = '0'
         console.log(time)
         await User.findOneAndUpdate({ _id: req.user._id }, { time })
