@@ -173,8 +173,9 @@ header.darkHeader{background:#fff;border-bottom:1px solid rgba(0,0,0,.1);-webkit
 .menu::-webkit-scrollbar-thumb{background:#293859;}
 .menu::-webkit-scrollbar-thumb:hover{background:#293859;}
 .banner_section{position:relative;}
-.banner_section .main-slider{position:relative;}
-.banner_section .main-slider .owl-dots{position:absolute;left:0;right:0;bottom:20px;margin:auto;text-align:center;}
+.banner_section .main-slider{position:relative; width: 100%;}
+.banner_section .main-slider .owl-dots{
+    position:absolute;left:0;right:0;bottom:20px;margin:auto;text-align:center;}
 .banner_section .main-slider .owl-dots .owl-dot span{background:#c6c9d3;border-radius:12px;display:block;height:12px;width:12px;margin:20px 5px 0 5px;}
 .banner_section .main-slider .owl-dots .owl-dot.active span{background:#131e36;width:40px;}
 .banner_section .slider-content{max-width:50%;position:absolute;top:50%;transform:translateY(-50%);-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-o-transform:translateY(-50%);-ms-transform:translateY(-50%);z-index:9;text-align:center;margin:auto;left:0;right:0;}

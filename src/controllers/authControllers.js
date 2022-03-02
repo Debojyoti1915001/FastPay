@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Bills = require('../../public/js/bills')
 const Bankdetails = require('../models/Bankdetails')
+const Touchpoint = require('../models/Touchpoint')
 const jwt = require('jsonwebtoken')
 const { signupMail } = require('../config/nodemailer')
 const path = require('path')
@@ -281,4 +282,34 @@ module.exports.automateBills_post = async (req, res) => {
     )
     // console.log(arrayOfAutomatedBills)
     res.redirect('/user/automateBills')
+}
+module.exports.becometouchpoint_get = async (req, res) => {
+    res.render('touchpoint')
+}
+module.exports.becometouchpoint_post = async (req, res) => {
+    const { name, phone , address, city,zip } = req.body
+    const user=req.user
+    try {
+    const newtouchpoint = await new Touchpoint({
+        name, 
+        phone, 
+        address, 
+        city, 
+        user:user._id,
+        zip
+    }).save()
+    console.log(newtouchpoint)
+    // if (!Touchpoint) {
+    //     //req.flash('error_msg','  can not be created');
+    //     return res.send('Failed')
+    // }
+    const arrayOfTouchPoint = req.user.touchPoint
+    console.log(arrayOfTouchPoint)
+    arrayOfTouchPoint.push(newtouchpoint._id)
+    await User.findOneAndUpdate({ _id: req.user._id }, { touchPoint: arrayOfTouchPoint })
+    res.redirect('/user/becometouchpoint')
+} catch (err) {
+    console.error(err)
+    return res.redirect('/')
+}
 }

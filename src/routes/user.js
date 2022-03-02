@@ -14,4 +14,6 @@ router.get('/addBank', requireAuth, authController.addBank_get)
 router.post('/addBank', requireAuth, authController.addBank_post)
 router.get('/automateBills', requireAuth, authController.automateBills_get)
 router.post('/automateBills/:id', requireAuth, authController.automateBills_post)
+router.get('/becometouchpoint', requireAuth, authController.becometouchpoint_get)
+router.post('/becometouchpoint', requireAuth, authController.becometouchpoint_post)
 module.exports = router
