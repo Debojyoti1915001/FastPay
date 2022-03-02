@@ -52,6 +52,12 @@ const userSchema = mongoose.Schema(
                 ref: 'Bankdetails',
             },
         ],
+        touchPoint: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Touchpoint',
+            },
+        ],
         automated:[{
             type: Number,
         }],

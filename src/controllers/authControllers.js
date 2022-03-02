@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Bills = require('../../public/js/bills')
 const Bankdetails = require('../models/Bankdetails')
+const Touchpoint = require('../models/Touchpoint')
 const jwt = require('jsonwebtoken')
 const { signupMail } = require('../config/nodemailer')
 const path = require('path')
@@ -282,4 +283,99 @@ module.exports.automateBills_post = async (req, res) => {
     )
     // console.log(arrayOfAutomatedBills)
     res.redirect('/user/automateBills')
+}
+module.exports.becometouchpoint_get = async (req, res) => {
+    res.render('touchpoint')
+}
+module.exports.becometouchpoint_post = async (req, res) => {
+    const { name, phone , address, city,zip } = req.body
+    const user=req.user
+    try {
+    const newtouchpoint = await new Touchpoint({
+        name, 
+        phone, 
+        address, 
+        city, 
+        user:user._id,
+        zip
+    }).save()
+    console.log(newtouchpoint)
+    // if (!Touchpoint) {
+    //     //req.flash('error_msg','  can not be created');
+    //     return res.send('Failed')
+    // }
+    const arrayOfTouchPoint = req.user.touchPoint
+    console.log(arrayOfTouchPoint)
+    arrayOfTouchPoint.push(newtouchpoint._id)
+    await User.findOneAndUpdate({ _id: req.user._id }, { touchPoint: arrayOfTouchPoint })
+    res.redirect('/user/becometouchpoint')
+} catch (err) {
+    console.error(err)
+    return res.redirect('/')
+}
+}
+module.exports.findtouchpoint_get = async (req, res) => {
+    const byAddress = []
+    const byCity = []
+    const byZip = [] 
+    res.render('findtouchpoint', {byAddress,byCity,byZip})
+}
+module.exports.findtouchpoint_post = async (req, res) => {  
+    const id = req.params.id
+    var byAddress = []
+    var byCity = []
+    var byZip = [] 
+
+    //byaddress
+    if(id==1){
+        byAddress = await Touchpoint.find({address: req.body.filter}, function(err, data){
+            if(err){
+                console.log(err);
+                return
+            }
+        
+            if(data.length == 0) {
+                console.log("No record found")
+                return
+            }
+
+        })
+    }
+    if(id==2){
+       byCity = await Touchpoint.find({city: req.body.filter}, function(err, data){
+            if(err){
+                console.log(err);
+                return
+            }
+        
+            if(data.length == 0) {
+                console.log("No record found")
+                return
+            }
+        })
+    }  
+    if(id==3){
+        byZip = await Touchpoint.find({zip: req.body.filter}, function(err, data){
+            if(err){
+                console.log(err);
+                return
+            }
+        
+            if(data.length == 0) {
+                console.log("No record found")
+                return
+            }
+        })
+    }       
+    for(var i=0;i<byAddress.length;i++){
+        await byAddress[i].populate('user').execPopulate()
+    }
+    for(var i=0;i<byCity.length;i++){
+        await byAddress[i].populate('user').execPopulate()
+    }
+    for(var i=0;i<byZip.length;i++){
+        await byAddress[i].populate('user').execPopulate()
+    }
+    res.send({byAddress,byCity,byZip})
+    //res.render('findtouchpoint', {byAddress,byCity,byZip})
 }
