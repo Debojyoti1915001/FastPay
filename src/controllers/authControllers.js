@@ -314,3 +314,68 @@ module.exports.becometouchpoint_post = async (req, res) => {
     return res.redirect('/')
 }
 }
+module.exports.findtouchpoint_get = async (req, res) => {
+    const byAddress = []
+    const byCity = []
+    const byZip = [] 
+    res.render('findtouchpoint', {byAddress,byCity,byZip})
+}
+module.exports.findtouchpoint_post = async (req, res) => {  
+    const id = req.params.id
+    var byAddress = []
+    var byCity = []
+    var byZip = [] 
+
+    //byaddress
+    if(id==1){
+        byAddress = await Touchpoint.find({address: req.body.filter}, function(err, data){
+            if(err){
+                console.log(err);
+                return
+            }
+        
+            if(data.length == 0) {
+                console.log("No record found")
+                return
+            }
+
+        })
+    }
+    if(id==2){
+       byCity = await Touchpoint.find({city: req.body.filter}, function(err, data){
+            if(err){
+                console.log(err);
+                return
+            }
+        
+            if(data.length == 0) {
+                console.log("No record found")
+                return
+            }
+        })
+    }  
+    if(id==3){
+        byZip = await Touchpoint.find({zip: req.body.filter}, function(err, data){
+            if(err){
+                console.log(err);
+                return
+            }
+        
+            if(data.length == 0) {
+                console.log("No record found")
+                return
+            }
+        })
+    }       
+    for(var i=0;i<byAddress.length;i++){
+        await byAddress[i].populate('user').execPopulate()
+    }
+    for(var i=0;i<byCity.length;i++){
+        await byAddress[i].populate('user').execPopulate()
+    }
+    for(var i=0;i<byZip.length;i++){
+        await byAddress[i].populate('user').execPopulate()
+    }
+    res.send({byAddress,byCity,byZip})
+    //res.render('findtouchpoint', {byAddress,byCity,byZip})
+}
