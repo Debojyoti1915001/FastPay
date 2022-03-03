@@ -358,7 +358,7 @@ module.exports.findtouchpoint_post = async (req, res) => {
     for(var i=0;i<byZip.length;i++){
         await byAddress[i].populate('user').execPopulate()
     }
-    res.send({byAddress,byCity,byZip})
-    //res.render('touchpointresults',{byAddress,byCity,byZip})
+    // res.send({byAddress,byCity,byZip})
+    res.render('touchpointresults',{byAddress,byCity,byZip})
     //res.render('findtouchpoint', {byAddress,byCity,byZip})
 }

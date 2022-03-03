@@ -18,8 +18,15 @@
 </head>
 
 <body>
-    <h1> Search Results</h1>
-    <% byAddress.map(data => data)%>
+    <% for(var i=0;i<byAddress.length;i++) { %>
+        <%= byAddress[i].name %>
+        <%= byAddress[i].user.email %>
+        <%= byAddress[i].user.name %>
+        <%= byAddress[i].phone %>
+        <%= byAddress[i].address %>
+        <%= byAddress[i].city %>
+
+    <%}%>
 </body>
 
 </html>
