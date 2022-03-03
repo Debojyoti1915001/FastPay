@@ -1,7 +1,32 @@
 
 <%- include("partials/header.ejs") -%>
+<section class="inner-banner">
 
-<div class="container" style="min-height: 100vh; display:flex; align-items:center; justify-content:center;">
+  <div class="max_width">
+      <div class="clear">
+          <div class="width50">
+              <div class="content">
+                  <h1><span>ADD YOUR <br></span>BANK</h1>
+              </div>
+          </div>
+          <div class="width50">
+              <span>
+                  <img src="https://www.bharatbillpay.com/images/inner-banner/customer.png" alt="" title="" width="" height="" class="inner-banner-img" />
+              </span>
+          </div>
+      </div>
+  </div>       
+
+</section>
+
+<div class="container" style="min-height: 100vh;
+                             margin-top:-5rem; 
+                             display:flex; 
+                             padding-top: 1rem;
+                             align-items:center; 
+                             justify-content:center;
+                             background-color: rgb(248, 120, 0,0.1);
+                             border-radius: 20px;">
     <form class="row g-3" action="/user/addBank" method="POST">
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label">Bank Name</label>
@@ -33,9 +58,8 @@
           <input type="text" class="form-control" id="inputCity"name="state">
         </div>
   
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Add this bank</button>
+        <div>
+          <button type="submit" class="btn btn-primary text-right">Add this bank</button>
         </div>
       </form>
 
