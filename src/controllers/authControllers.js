@@ -333,24 +333,12 @@ module.exports.findtouchpoint_post = async (req, res) => {
                 console.log(err);
                 return
             }
-        
-            if(data.length == 0) {
-                console.log("No record found")
-                return
-            }
-
         })
     }
     if(id==2){
        byCity = await Touchpoint.find({city: req.body.filter}, function(err, data){
             if(err){
                 console.log(err);
-                return
-            }
-        
-            if(data.length == 0) {
-                console.log("No record found")
-                return
             }
         })
     }  
@@ -358,12 +346,6 @@ module.exports.findtouchpoint_post = async (req, res) => {
         byZip = await Touchpoint.find({zip: req.body.filter}, function(err, data){
             if(err){
                 console.log(err);
-                return
-            }
-        
-            if(data.length == 0) {
-                console.log("No record found")
-                return
             }
         })
     }       
@@ -376,6 +358,13 @@ module.exports.findtouchpoint_post = async (req, res) => {
     for(var i=0;i<byZip.length;i++){
         await byAddress[i].populate('user').execPopulate()
     }
-    res.send({byAddress,byCity,byZip})
+    // res.send({byAddress,byCity,byZip})
+    res.render('touchpointresults',{byAddress,byCity,byZip})
     //res.render('findtouchpoint', {byAddress,byCity,byZip})
+}
+module.exports.chatindex_get = async (req, res) => {
+    res.render('chatindex')
+}
+module.exports.chat_get = async (req, res) => {
+    res.render('chat')
 }
