@@ -1,0 +1,63 @@
+p{
+    margin:0;
+    border: 0;
+}
+
+i{
+    margin-top: 6px;
+    width:5rem;
+}
+
+.bills{
+   
+    margin: 3rem auto 0 auto;
+    width: 60%;
+    max-width: 1100px;
+   
+}
+
+.bill{
+    display: flex;
+    /*align-items: space-evenly;*/
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:2rem;
+}
+
+.info{
+    display: flex;
+    gap:20px;
+    align-items: center;
+}
+
+.date{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
+
+.automatebtn{
+    width:8rem;
+    height:2rem;
+    border-radius: 0.25rem;
+    border: solid 0.05rem lightgreen;
+    background-color: white;
+    color:black;
+}
+
+.automatebtn:hover{
+    background-color: #D9D7F1;
+    color:white;
+    box-shadow: 0.25rem 0.1rem;
+}
+
+.automated
+{
+    background-color: lightgreen;
+}
+
+.automated:hover
+{
+    background-color: lightgreen;
+}
