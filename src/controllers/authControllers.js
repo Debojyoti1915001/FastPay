@@ -362,3 +362,9 @@ module.exports.findtouchpoint_post = async (req, res) => {
     res.render('touchpointresults',{byAddress,byCity,byZip})
     //res.render('findtouchpoint', {byAddress,byCity,byZip})
 }
+module.exports.chatindex_get = async (req, res) => {
+    res.render('chatindex')
+}
+module.exports.chat_get = async (req, res) => {
+    res.render('chat')
+}
