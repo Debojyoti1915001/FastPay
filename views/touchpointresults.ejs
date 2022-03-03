@@ -80,6 +80,86 @@
                 </td>
               </tr>
               <%}%>
+              <% for(var i=0;i<byCity.length;i++) { %>
+                <tr>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <form method="POST" action="/user/mail/<%= byCity[i].name %>/<%= byCity[i].user.email %>">
+                          <div class="modal-body">
+                              <h4>Send Mail</h4>
+                              <p class="text12" >
+                                  The touchpoint will be send a mail requesting him to join a chat room for conversation along with the message below
+                                  <textarea name="text"id="comment" rows="3" placeholder="Send an Email to connect with your <%= byCity[i].name %>"></textarea>
+                              </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  <td><%= byCity[i].name %></td>
+                  <td><%= byCity[i].user.email %></td>
+                  <td> <%= byCity[i].user.name %></td>
+                  <td> <%= byCity[i].phone %></td>
+                  <td> <%= byCity[i].address %></td>
+                  <td> <%= byCity[i].city %></td>
+                  <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                          Chat
+                      </button>    
+                  </td>
+                </tr>
+                <%}%>
+                <% for(var i=0;i<byZip.length;i++) { %>
+                    <tr>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <form method="POST" action="/user/mail/<%= byZip[i].name %>/<%= byZip[i].user.email %>">
+                              <div class="modal-body">
+                                  <h4>Send Mail</h4>
+                                  <p class="text12" >
+                                      The touchpoint will be send a mail requesting him to join a chat room for conversation along with the message below
+                                      <textarea name="text"id="comment" rows="3" placeholder="Send an Email to connect with your <%=byZip[i].name %>"></textarea>
+                                  </p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                              </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      <td><%= byZip[i].name %></td>
+                      <td><%= byZip[i].user.email %></td>
+                      <td> <%= byZip[i].user.name %></td>
+                      <td> <%= byZip[i].phone %></td>
+                      <td> <%= byZip[i].address %></td>
+                      <td> <%= byZip[i].city %></td>
+                      <td>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                              Chat
+                          </button>    
+                      </td>
+                    </tr>
+                    <%}%>
             </tbody>
           </table>
         </div>
