@@ -135,7 +135,7 @@ ul li {
     width: 50vw;
     height: 100vh;
     opacity: 0.85;
-    background-color: #5ca0ff;
+    background-color: #FFE268;
     float: left;
 }
 #signUp {
@@ -150,11 +150,11 @@ ul li {
     background-color: #ffffff;
 }
 #design {
-    margin-top: 18vh;
+    margin-top: 33vh;
     position: relative;
     margin-left: 5vw;
-    width: 75%;
-    height: 60%;
+    width: 30%;
+    height: 30%;
 }
 #Form {
     width: 50vw;
@@ -184,6 +184,7 @@ ul li {
     letter-spacing: 0.03em;
     margin-bottom: 2vh;
     margin-left: 11vw;
+    color: #FF7A00;
 }
 #signUpText {
     text-align: center;
@@ -304,13 +305,14 @@ border:2px solid blue;
 }
 #termLink {
     text-decoration: underline;
+    color: #ff8834;
 }
 #submitbtn {
     display: block;
     margin-top: 3px;
     width: 80%;
     height: 5.5vh;
-    background: #458ff6;
+    background: #ff8834;
     border-radius: 6px;
     outline: none;
     border: none;
@@ -334,6 +336,7 @@ border:2px solid blue;
     text-decoration: none !important;
     font-family: Inter;
     font-size: 135%;
+    color: #ff8834;
 }
 
 @media screen and (max-width: 1200px) {
@@ -369,16 +372,26 @@ border:2px solid blue;
 }
 @media screen and (max-width: 950px) {
     #design {
-        margin-top: 22vh;
+        /* margin-top: 22vh;
         width: 90%;
         height: auto;
-        margin-left: 3vw;
+        margin-left: 3vw; */
+        margin-top: 33vh;
+        position: relative;
+        margin-left: 5vw;
+        width: 40%;
+        height: 30%;
     }
 }
 
 @media screen and (max-width: 750px) {
     #design {
-        margin-top: 26vh;
+        /* margin-top: 26vh; */
+        margin-top: 33vh;
+        position: relative;
+        margin-left: 5vw;
+        width: 45%;
+        height: 30%;
     }
     #signUpform {
         margin: 5vh auto;
@@ -423,8 +436,13 @@ border:2px solid blue;
 }
 @media screen and (max-width: 575px) {
     #design {
-        margin-left: 1vw;
-        width: 98%;
+        /* margin-left: 1vw;
+        width: 98%; */
+        margin-top: 33vh;
+        position: relative;
+        margin-left: 5vw;
+        width: 60%;
+        height: 30%;
     }
     #heading {
         font-size: 130%;
