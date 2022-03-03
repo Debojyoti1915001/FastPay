@@ -211,6 +211,9 @@ module.exports.addBank_get = async (req, res) => {
     res.render('form')
 }
 module.exports.automateBills_get = async (req, res) => {
+    if(req.user.bank.length===0){
+        res.redirect('/user/addBank')
+    }
     var arrayOfAutomatedBills = req.user.automated
     var arrayOfBills = req.user.bills
     var date = new Date().toISOString()
