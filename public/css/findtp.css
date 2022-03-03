@@ -162,8 +162,8 @@ header ul li:hover {
       background-color: #627c92 !important;
   }
   .panel {
-      background-color: rgb(255, 132, 50,0.5);
-      border-radius: 10px;
+      background-color: #F1F1F1;
+      border-radius: 50px;
       height: 7rem;
       width: 30rem;
       margin-left: -8rem;
