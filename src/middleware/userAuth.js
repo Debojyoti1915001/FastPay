@@ -46,7 +46,7 @@ const redirectIfLoggedIn = (req, res, next) => {
     if (token)
     {
         req.flash("error_msg", "You are already logged in.")
-        res.redirect("/user/profile")
+        res.redirect("/")
     }
     else
     {
