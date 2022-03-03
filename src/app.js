@@ -17,6 +17,7 @@ require('dotenv').config()
 //Configuring Port
 const PORT = process.env.PORT || 3000
 
+
 //Mongoose connection
 mongoose
     .connect(process.env.MONGODB_URL, {
@@ -28,7 +29,7 @@ mongoose
     .then(() => console.log('Connected to mongo server'))
     .catch((err) => console.error(err))
 
-const publicDirectory = path.join(__dirname, '../public')
+const publicDirectory = path.join(__dirname, '../public/bharat')
     // console.log(publicDirectory);
 app.use(express.static(publicDirectory))
 

@@ -18,4 +18,7 @@ router.get('/becometouchpoint', requireAuth, authController.becometouchpoint_get
 router.post('/becometouchpoint', requireAuth, authController.becometouchpoint_post)
 router.get('/findtouchpoint', requireAuth, authController.findtouchpoint_get)
 router.post('/findtouchpoint/:id', requireAuth, authController.findtouchpoint_post)
+router.get('/chatindex', requireAuth, authController.chatindex_get)
+router.get('/chat', requireAuth, authController.chat_get)
+router.post('/mail/:touchPoint/:email', requireAuth, authController.mail_post)
 module.exports = router

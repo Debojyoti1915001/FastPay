@@ -3,7 +3,7 @@ const Bills = require('../../public/js/bills')
 const Bankdetails = require('../models/Bankdetails')
 const Touchpoint = require('../models/Touchpoint')
 const jwt = require('jsonwebtoken')
-const { signupMail } = require('../config/nodemailer')
+const { signupMail,mailToTouchpoint } = require('../config/nodemailer')
 const path = require('path')
 const { handleErrors, generateShortId } = require('../utilities/Utilities')
 const crypto = require('crypto')
@@ -333,24 +333,12 @@ module.exports.findtouchpoint_post = async (req, res) => {
                 console.log(err);
                 return
             }
-        
-            if(data.length == 0) {
-                console.log("No record found")
-                return
-            }
-
         })
     }
     if(id==2){
        byCity = await Touchpoint.find({city: req.body.filter}, function(err, data){
             if(err){
                 console.log(err);
-                return
-            }
-        
-            if(data.length == 0) {
-                console.log("No record found")
-                return
             }
         })
     }  
@@ -358,12 +346,6 @@ module.exports.findtouchpoint_post = async (req, res) => {
         byZip = await Touchpoint.find({zip: req.body.filter}, function(err, data){
             if(err){
                 console.log(err);
-                return
-            }
-        
-            if(data.length == 0) {
-                console.log("No record found")
-                return
             }
         })
     }       
@@ -376,6 +358,24 @@ module.exports.findtouchpoint_post = async (req, res) => {
     for(var i=0;i<byZip.length;i++){
         await byAddress[i].populate('user').execPopulate()
     }
-    res.send({byAddress,byCity,byZip})
+    // res.send({byAddress,byCity,byZip})
+    res.render('touchpointresults',{byAddress,byCity,byZip})
     //res.render('findtouchpoint', {byAddress,byCity,byZip})
+}
+module.exports.chatindex_get = async (req, res) => {
+    res.render('chatindex')
+}
+module.exports.chat_get = async (req, res) => {
+    res.render('chat')
+}
+module.exports.mail_post = async (req, res) => {
+    var touchPointName=req.params.touchPoint
+    var touchPointEmail=req.params.email
+    var userName=req.user.name
+    var channelName=req.user.email//name of the channel
+    var text=req.body.text
+    var random=Math.floor(Math.random() * 1000);
+    console.log(touchPointName,touchPointEmail,text);
+    mailToTouchpoint(touchPointName,touchPointEmail,random,userName,channelName,text,req.hostname, req.protocol);
+    res.redirect(301,`http://localhost:8000/chat.html?username=${req.user.name}${random}&room=${channelName}`)
 }

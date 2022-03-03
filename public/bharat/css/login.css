@@ -20,7 +20,6 @@
 	letter-spacing: 0.03em;
 	margin-bottom: 3vh;
 	margin-left: 16vw;
-	color: #FF7A00;
 }
 #logInText{
 	text-align:center;
@@ -37,7 +36,7 @@
  	margin-top:3px;
  	width:24vw;
  	height:6.5vh;
- 	background: #ff8834;
+ 	background: #458FF6;
     border-radius: 6px;
     outline:none;
     border:none;
@@ -63,7 +62,6 @@
  	text-decoration: none !important;
  	font-family:Inter;
  	font-size:1.2em;
-	 color: #ff8834;
  }
  /* @media screen and (max-width: 1367px){
 	 #heading1{

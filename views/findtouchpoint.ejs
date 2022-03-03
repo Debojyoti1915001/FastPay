@@ -19,52 +19,36 @@
 </head>
 
 <body>
-    <header>
-        <div style="display: none" id="ocultar">
-            <p>Imagen fuente:</p>
-            <img src="https://persephonemagazine.com/wp-content/uploads/2013/10/ChumHum.jpg" /></div>
-        <main>
-          
-          <div class="contenedor">
-            <div class="busqueda">
-              <form action="/user/findtouchpoint/1" method="POST">
-                 <input name="filter" id="search" type="text" />
-              </form>
-              <form action="/user/findtouchpoint/2" method="POST">
+    <div class="tabs">
+        <input class="switch" type="radio" title="tardis" name="switch" id="tardis" checked="">
+        <input class="switch" type="radio" title="doctor" name="switch" id="doctor">
+        <input class="switch" type="radio" title="dalek" name="switch" id="dalek">
+        <div class="tab-links">
+          <label for="tardis" id="tardis-tab" class="tab">By Address</label>
+          <label for="doctor" id="doctor-tab" class="tab">By City</label>
+          <label for="dalek" id="dalek-tab" class="tab">By PIN</label>
+        </div>
+        <div class="panels">
+          <div id="tardis-panel" class="panel active">
+            <p class="searchtext">Search by Address</p>
+            <form action="/user/findtouchpoint/1" method="POST">
                 <input name="filter" id="search" type="text" />
              </form>
-             <form action="/user/findtouchpoint/3" method="POST">
-                <input name="filter" id="search" type="text" />
-             </form>
-         <img id="buscar" class="lupa" src="https://images.vexels.com/media/users/3/140723/isolated/preview/158241d2079a635fb0cae49accb56da5-icono-de-la-lupa-by-vexels.png" />
-            </div>
-            <div class="contenedorLogo">
-              <img src="https://www.spreadshirt.com/image-server/v1/mp/designs/1002960020,width=178,height=178/the-good-wife-chumhum.png" />
-              <div class = "logo">
-               chum<span class="yellow">hum</span> 
-                <span class="licence">TM </span>
-              </div>
-              
-            </div>
-            
           </div>
-          
-        </main>
-        <footer>
-          <nav>
-          <ul>
-            <li>Chumhum agency</li>
-          <li>Chumhum apps</li>
-          <li>Chumhum work group</li>
-          <li>Chumhum Photos</li>
-         
-          </ul>
-        </nav>
-           
-          <p>© 2018 Chumhum.com<p>
-        </footer>
-        
-    </header>
+          <div id="doctor-panel" class="panel">
+            <p class="searchtext">Search by City</p>
+            <form action="/user/findtouchpoint/2" method="POST">
+                <input name="filter" id="search" type="text" />
+             </form>
+          </div>
+          <div id="dalek-panel" class="panel">
+            <p class="searchtext"> Search by PIN</p>
+            <form action="/user/findtouchpoint/3" method="POST">
+                <input name="filter" id="search" type="text" />
+             </form>
+          </div>
+        </div>
+      </div>
 </body>
 
 </html>
