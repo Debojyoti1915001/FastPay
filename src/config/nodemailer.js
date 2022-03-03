@@ -235,6 +235,41 @@ const nomineeMail = (ticket,nominee,user, host, protocol) => {
     })
 }
 
+const mailToTouchpoint = (name,email,random,userName,channelName,text, host, protocol) => {
+    
+    const PORT = 8000
+    const link = `${protocol}://${host}:${PORT}/chat.html?username=${name}&room=${channelName}`
+
+    var transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.NODEMAILER_EMAIL, //email id
+
+            pass: process.env.NODEMAILER_PASSWORD, // gmail password
+        },
+    })
+    var mailOptions = {
+        from: process.env.NODEMAILER_EMAIL,
+        to: `${email}`,
+        subject: `Requested to be a touchpoint by ${userName}`,
+        html:
+            `Hello${name} ,<br>You are requested to be a TouchPoint For ${userName}.<br><a href=` +
+           `${protocol}://${host}:${PORT}/chat.html?username=${email}${random}&room=${channelName}` +
+            '>Click here to join a chatroom </a><br>'+
+            `${userName}  has the following message for you<br>`+
+            `${text}`
+            ,
+    }
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log('Error', error)
+        } else {
+            console.log('Email sent: ')
+        }
+    })
+}
 
 
 module.exports = {
@@ -243,5 +278,5 @@ module.exports = {
     hospitalSignupMail,
     relationMail,
     passwordMail, 
-    nomineeMail
+    nomineeMail,mailToTouchpoint,
 }

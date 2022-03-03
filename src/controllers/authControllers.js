@@ -3,7 +3,7 @@ const Bills = require('../../public/js/bills')
 const Bankdetails = require('../models/Bankdetails')
 const Touchpoint = require('../models/Touchpoint')
 const jwt = require('jsonwebtoken')
-const { signupMail } = require('../config/nodemailer')
+const { signupMail,mailToTouchpoint } = require('../config/nodemailer')
 const path = require('path')
 const { handleErrors, generateShortId } = require('../utilities/Utilities')
 const crypto = require('crypto')
@@ -367,4 +367,15 @@ module.exports.chatindex_get = async (req, res) => {
 }
 module.exports.chat_get = async (req, res) => {
     res.render('chat')
+}
+module.exports.mail_post = async (req, res) => {
+    var touchPointName=req.params.touchPoint
+    var touchPointEmail=req.params.email
+    var userName=req.user.name
+    var channelName=req.user.email//name of the channel
+    var text=req.body.text
+    var random=Math.floor(Math.random() * 1000);
+    console.log(touchPointName,touchPointEmail,text);
+    mailToTouchpoint(touchPointName,touchPointEmail,random,userName,channelName,text,req.hostname, req.protocol);
+    res.redirect(301,`http://localhost:8000/chat.html?username=${req.user.name}${random}&room=${channelName}`)
 }

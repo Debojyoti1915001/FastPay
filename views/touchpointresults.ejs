@@ -51,16 +51,19 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
+                        <form method="POST" action="/user/mail/<%= byAddress[i].name %>/<%= byAddress[i].user.email %>">
                         <div class="modal-body">
                             <h4>Send Mail</h4>
                             <p class="text12" >
+                                The touchpoint will be send a mail requesting him to join a chat room for conversation along with the message below
                                 <textarea name="text"id="comment" rows="3" placeholder="Send an Email to connect with your <%= byAddress[i].name %>"></textarea>
                             </p>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
+                        </form>
                       </div>
                     </div>
                   </div>
