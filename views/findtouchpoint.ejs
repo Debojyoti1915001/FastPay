@@ -19,6 +19,7 @@
 </head>
    
 <body>
+     <%- include("partials/header.ejs") -%>
     <div class="tabs" style="padding-top: 6rem;">
         <input  type="radio" title="tardis" name="switch" id="tardis" style="opacity: 0;">
         <input  type="radio" title="doctor" name="switch" id="doctor" style="opacity: 0;">
@@ -49,7 +50,9 @@
           </div>
         </div>
       </div>
-       
+       <div style="margin-top: 14rem;">
+        <%- include("partials/footer.ejs") -%>
+         </div>
 </body>
   <script>
     const input = document.getElementById("search-input");
