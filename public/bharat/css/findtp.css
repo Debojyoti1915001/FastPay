@@ -162,8 +162,8 @@ header ul li:hover {
       background-color: #627c92 !important;
   }
   .panel {
-      background-color: rgb(255, 132, 50,0.5);
-      border-radius: 10px;
+      background-color: rgb(90, 90, 90);
+      border-radius: 13px;
       height: 7rem;
       width: 30rem;
       margin-left: -8rem;
@@ -175,7 +175,6 @@ header ul li:hover {
   }
   
   .tabs .panels {
-    background-color: #fff;
     padding: 50px;
   }
   
@@ -194,13 +193,14 @@ header ul li:hover {
   }
   
   body {
-    background-image: url(https://www.bharatbillpay.com/images/slider/slider01.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
     font-family: 'Roboto', helvetica, arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
     text-rendering: optimizeLegibility;
+    background-image: url('img/bg-tp.jpg')!important;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
   h2 {
     color: #00203c;

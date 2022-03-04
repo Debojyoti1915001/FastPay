@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 
 </head>
-
+   
 <body>
-    <div class="tabs">
+    <div class="tabs" style="padding-top: 6rem;">
         <input class="switch" type="radio" title="tardis" name="switch" id="tardis" checked="">
         <input class="switch" type="radio" title="doctor" name="switch" id="doctor">
         <input class="switch" type="radio" title="dalek" name="switch" id="dalek">
@@ -33,7 +33,7 @@
             <p class="searchtext">Search by Address</p>
             <form action="/user/findtouchpoint/1" method="POST">
                 <input name="filter" id="search" type="text" />
-             </form>
+             </form> 
           </div>
           <div id="doctor-panel" class="panel">
             <p class="searchtext">Search by City</p>
@@ -49,7 +49,20 @@
           </div>
         </div>
       </div>
-      
+       
 </body>
+  <script>
+    const input = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
 
+const expand = () => {
+  searchBtn.classList.toggle("close");
+  input.classList.toggle("square");
+};
+
+searchBtn.addEventListener("click", expand);
+
+
+
+  </script>
 </html>
