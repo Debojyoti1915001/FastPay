@@ -177,7 +177,7 @@ header ul li:hover {
       margin-left: -8rem;
   }
   #tardis:checked ~ .tab-links #tardis-tab,#doctor:checked ~ .tab-links #doctor-tab,#dalek:checked ~ .tab-links #dalek-tab {
-    background-color: #e65c0d;
+    background-color: #FE9900;
     color: #000;
     cursor: default;
   }
@@ -225,7 +225,7 @@ header ul li:hover {
   }
   
   .tabs .tab:hover {
-    background-color: #f07400;
+    background-color: #FE9900;
     color: #000;
   }
   
