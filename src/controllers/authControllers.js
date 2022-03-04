@@ -10,7 +10,7 @@ const crypto = require('crypto')
 require('dotenv').config()
 const { nanoId, random } = require('nanoid')
 const mongoose = require('mongoose')
-
+const flash = require('connect-flash')
 const maxAge = 30 * 24 * 60 * 60
 
 // controller actions
@@ -208,7 +208,17 @@ module.exports.addBank_post = async (req, res) => {
 }
 module.exports.addBank_get = async (req, res) => {
     // res.send(req.user)
-    res.render('form')
+    var banks = req.user.bank
+    var bankDetails = []
+    
+    for(var i=0;i<banks.length;i++){
+        var random=Math.floor(Math.random() * 1000)+1000;
+        await(Bankdetails.findById(banks[i])).then(bank=>{
+            bankDetails.push({bank:bank.name,acc:bank.accountNumber,ran:random})
+        })
+    }
+    //res.send(bankDetails)
+     res.render('form',{bankDetails:bankDetails})
 }
 module.exports.automateBills_get = async (req, res) => {
     if(req.user.bank.length===0){
