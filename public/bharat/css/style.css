@@ -293,7 +293,7 @@ header.darkHeader{background:#fff;border-bottom:1px solid rgba(0,0,0,.1);-webkit
 .know-more-about h3{font-size:22px;}
 .know-more-about h3 a{text-decoration:underline;color:#ff8834;}
 .inner-banner{padding:5% 0;background:#f1f1f1;position:relative;}
-.inner-banner .content h1{position:absolute;top:55%;transform:translateY(-50%);-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-o-transform:translateY(-50%);-ms-transform:translateY(-50%);z-index:9;font-size:60px;line-height:65px;font-weight:700;padding-bottom:20px;color:#293859;}
+.inner-banner .content h1{position:absolute;top:55%;z-index:9;font-size:60px;line-height:65px;font-weight:700;padding-bottom:20px;color:#293859;}
 .inner-banner .content h1 span{color:#ff8834;}
 .inner-banner .inner-banner-img{float:right;height:300px;margin-top:35px;width:auto;}
 footer{background:#131e36;padding:30px 0;}
