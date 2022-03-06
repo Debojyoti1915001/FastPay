@@ -204,7 +204,7 @@ module.exports.addBank_post = async (req, res) => {
     }
     console.log(req.body)
     //   res.status(201).send('Bank details added successfully');
-    res.send(req.user)
+    res.redirect('/user/addBank')
 }
 module.exports.addBank_get = async (req, res) => {
     // res.send(req.user)
