@@ -18,11 +18,25 @@
 
 </head>
 
-<body>
+<body style="scroll-behavior: smooth;">
     <header>
-        <div class="container">
+      <%- include("partials/header.ejs") -%>
 
-        <form class="well form-horizontal" action="/user/becometouchpoint" method="POST"  id="contact_form">
+
+     
+                    
+              
+        <div class="container" style="padding-top: 4rem; 
+        background-image: url(https://www.bharatbillpay.com/images/slider/slider01.jpg); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;">
+
+        <form class="well form-horizontal" action="/user/becometouchpoint" method="POST"  id="contact_form" style="
+        background-color: rgba(226, 45, 0, 0.1);
+        border-radius: 15px;
+        padding-top: 2rem;
+        ">
         <fieldset>
         <legend>Become a TouchPoint Today!</legend>
         <div class="form-group">

@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 
 const mongoose = require('mongoose')
-const connect_flash = require('connect-flash')
+//const connect_flash = require('connect-flash')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const expressLayouts = require('express-ejs-layouts')
@@ -13,6 +13,9 @@ app.use(express.json())
 app.use(cookieParser())
 // using dotenv module for environment
 require('dotenv').config()
+
+
+const flash = require('connect-flash');
 
 //Configuring Port
 const PORT = process.env.PORT || 3000
@@ -49,7 +52,7 @@ app.use(
     })
 )
 
-app.use(connect_flash())
+app.use(flash())
 
 // global var
 app.use((req, res, next) => {
@@ -79,9 +82,9 @@ app.listen(PORT, () => {
 })
 
 
-// const  User = require('./models/User')
+// const  User = require('./models/Bankdetails')
 //  const databasedlt= async()=>{
-//     const user = await User.find({email:"debojyoti76@gmail.com"})
+//     const user = await User.find({})
 //     user.forEach(async(data)=>{
 //          await User.findByIdAndDelete(data._id)
 //     })

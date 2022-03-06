@@ -12,6 +12,7 @@
     </head>
 
     <body>
+        <%- include("partials/header.ejs") -%>
         <div class="modal fade" id="basicModal0" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -180,8 +181,8 @@
               </div>
             </div>
           </div>
-        <div class="table-title" >
-            <h3>Automate Bills Here!s</h3>
+        <div class="table-title"style="padding-top:5rem;" >
+            <h3 style="color:rgb(94, 94, 94)">Automate Bills Here !</h3>
         </div>
         <table class="table-fill">
             <thead>
@@ -194,7 +195,7 @@
             <tbody class="table-hover">
                 <tr>
                     <td class="text-left">Electricity Bill</td>
-                    <td class="text-center">$ <%=arrayOfBills[0]%></td>
+                    <td class="text-center">&#8377 <%=arrayOfBills[0]%></td>
                     <% if(!arrayOfAutomatedBills.includes(0)){%>
                     <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal0">
                         Automate</a></td>
@@ -206,7 +207,7 @@
                 </tr>
                 <tr>
                     <td class="text-left">Gas Bill</td>
-                    <td class="text-center">$ <%=arrayOfBills[1]%></td>
+                    <td class="text-center">&#8377 <%=arrayOfBills[1]%></td>
                     <% if(!arrayOfAutomatedBills.includes(1)){%>
                         <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal1">
                             Automate</a></td>
@@ -217,7 +218,7 @@
                 </tr>
                 <tr>
                     <td class="text-left">DTH Bill</td>
-                    <td class="text-center">$<%= arrayOfBills[2]%></td>
+                    <td class="text-center">&#8377 <%= arrayOfBills[2]%></td>
                     <% if(!arrayOfAutomatedBills.includes(2)){%>
                         <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal2">
                             Automate</a></td>
@@ -228,7 +229,7 @@
                 </tr>
                 <tr>
                     <td class="text-left">Water Bill</td>
-                    <td class="text-center">$ <%=arrayOfBills[3]%></td>
+                    <td class="text-center">&#8377 <%=arrayOfBills[3]%></td>
                     <% if(!arrayOfAutomatedBills.includes(3)){%>
                         <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal3">
                             Automate</a></td>
@@ -239,7 +240,7 @@
                 </tr>
                 <tr>
                     <td class="text-left">Mobile Bill</td>
-                    <td class="text-center">$ <%=arrayOfBills[4]%></td>
+                    <td class="text-center">&#8377 <%=arrayOfBills[4]%></td>
                     <% if(!arrayOfAutomatedBills.includes(4)){%>
                         <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal4">
                             Automate</a></td>
@@ -250,7 +251,7 @@
                 </tr>
                 <tr>
                     <td class="text-left">Municipal Taxes</td>
-                    <td class="text-center">$<%= arrayOfBills[5]%></td>
+                    <td class="text-center">&#8377 <%= arrayOfBills[5]%></td>
                     <% if(!arrayOfAutomatedBills.includes(5)){%>
                         <td class="text-right href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal5">
                             Automate</a></td>
@@ -261,6 +262,7 @@
                 </tr>
             </tbody>
         </table>
+ 
     </body>
     <script src="/js/jquery-3.3.1.slim.min.js"></script>
     <script src="/js/popper.min.js"></script>

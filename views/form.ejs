@@ -1,44 +1,231 @@
-
 <%- include("partials/header.ejs") -%>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
-<div class="container" style="min-height: 100vh; display:flex; align-items:center; justify-content:center;">
-    <form class="row g-3" action="/user/addBank" method="POST">
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Bank Name</label>
-          <input type="text" class="form-control" id="inputEmail4" name="name">
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Account No.</label>
-          <input type="text" class="form-control" id="inputPassword4" name="accountNumber">
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Registered Mobile Number</label>
-          <input type="text" class="form-control" id="inputPassword4"name="mobileNumber">
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">IFSC Code</label>
-          <input type="text" class="form-control" id="inputPassword4"name="ifscCode">
-        </div>
-        <div class="col-12">
-          <label for="inputAddress" class="form-label">Branch</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="State Bank of India"name="branch">
-        </div>
-        
-        <div class="col-md-6">
-          <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity"name="city">
-        </div>
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">State</label>
-          <input type="text" class="form-control" id="inputCity"name="state">
-        </div>
+
+
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
   
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Add this bank</button>
-        </div>
-      </form>
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
 
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
+  </style>
+  <section class="inner-banner">
+
+    <div class="max_width">
+      <div class="clear">
+        <div class="width50">
+          <div class="content">
+            <h1><span>ADD YOUR <br></span>BANK</h1>
+          </div>
+        </div>
+        <div class="width50">
+          <span>
+            <img src="https://www.bharatbillpay.com/images/inner-banner/customer.png" alt="" title="" width="" height=""
+              class="inner-banner-img" />
+          </span>
+        </div>
+      </div>
     </div>
-</body>
-</html>
+
+  </section>
+
+  <div class="container" style="min-height: 100vh;
+                             margin-top:-5rem; 
+                             display:flex; 
+                             padding-top: 1rem;
+                             align-items:center; 
+                             justify-content:center;
+                             background-color: #F1F1F1;
+                             border-radius: 20px;">
+    <form class="row g-3" action="/user/addBank" method="POST">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Bank Name</label>
+        <input type="text" class="form-control" id="inputEmail4" name="name">
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Account No.</label>
+        <input type="text" class="form-control" id="inputPassword4" name="accountNumber">
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Registered Mobile Number</label>
+        <input type="text" class="form-control" id="inputPassword4" name="mobileNumber">
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">IFSC Code</label>
+        <input type="text" class="form-control" id="inputPassword4" name="ifscCode">
+      </div>
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Branch</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="State Bank of India" name="branch">
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="inputCity" name="city">
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <input type="text" class="form-control" id="inputCity" name="state">
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-primary text-right">Add this bank</button>
+      </div>
+    </form>
+    <div style="padding: 1rem;">
+     
+    </div>
+    <table class="table-fill">
+    
+      <thead>
+        <tr>
+          <th class="text-left">Bank Name</th>
+          <th class="text-left">Account Number</th>
+          <th class="text-left">Balance</th>
+        </tr>
+      </thead>
+      <tbody class="table-hover">
+        <%for(var i=0;i<bankDetails.length;i++){%>
+        <tr>
+          <td class="text-left"><%=bankDetails[i].bank%></td>
+          <td class="text-left"><%=bankDetails[i].acc%></td>
+          <td class="text-left"><%=bankDetails[i].ran%></td>
+        </tr>
+        <%}%>
+      </tbody>
+    </table>
+
+  </div>
+  </body>
+
+  </html>

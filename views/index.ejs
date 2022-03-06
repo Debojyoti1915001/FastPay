@@ -31,29 +31,46 @@
                     </a>
                 </div>
                 <div class="right-menu">
-                <div class="right-item">
-                        <a href="/bill-pay/">
-                            <img src="https://www.bharatbillpay.com/images/bill-pay.png" title="Bill Pay" width="32" height="32" />
-                            <span>Bill Pay</span>
-                        </a>
-                    </div>
-                    <div class="right-item">
-                        <a href="/contact-us">
-                            <img src="https://www.bharatbillpay.com/images/phone-call.svg" title="Get in touch" width="23" height="23" />
-                            <span>Get in touch</span>
-                        </a>
-                    </div>
-                    <div class="right-item">
-                        <a href="/customer#find-nearest">
-                            <img src="https://www.bharatbillpay.com/images/location.svg" title="Find nearest bill pay outlet" width="19" height="23"/>
-                            <span>Find nearest bill pay outlet</span>
-                        </a>
-                    </div>
-                    <div class="right-item">
-                        <a href="#">
-                            <span>Automate</span>
-                        </a>
-                    </div>
+                    <%if(c==true){%>
+                        <div class="right-item">
+                            <a href="/user/becometouchpoint">
+                                <img src="https://www.bharatbillpay.com/images/bill-pay.png" title="Bill Pay" width="32" height="32" />
+                                <span>Become Touchpoint</span>
+                            </a>
+                        </div>
+                        <div class="right-item">
+                            <a href="/user/findtouchpoint">
+                                <img src="https://www.bharatbillpay.com/images/phone-call.svg" title="Get in touch" width="23" height="23" />
+                                <span>Find Touchpoint</span>
+                            </a>
+                        </div>
+                        <div class="right-item">
+                            <a href="/user/addbank">
+                                <span>Add Bank</span>
+                            </a>
+                        </div>
+                        <div class="right-item">
+                            <a href="/user/automateBills">
+                                <span>Automate</span>
+                            </a>
+                        </div>
+                        <div class="right-item">
+                            <a href="/user/logout">
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                     <%}else{%>
+                        <div class="right-item">
+                            <a href="/user/signup">
+                                <span>Signup</span>
+                            </a>
+                        </div>
+                        <div class="right-item">
+                            <a href="/user/login">
+                                <span>Login</span>
+                            </a>
+                        </div>
+                    <%}%>   
                 </div>
             </div>
         </div>
@@ -147,7 +164,7 @@ color: #e1e2e5;
         </h1>
         <div class="input-box">
             <input type="text" id="txtBanks" placeholder="Enter your bank or non bank name" />
-            <button onclick="return BankRedirect()">PAY</button>
+            <button>PAY</button>
         </div>
         <hr />
         <h5>Pay <b>anytime</b> and from <b>anywhere</b></h5>
